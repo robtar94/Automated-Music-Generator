@@ -1,3 +1,0 @@
-jak zamienic dzwiek na punkt przestrzeni (one-hot encoding)
-Kwiatkowski strona 11 
-Implementacja w haskellu (hmatrix)
