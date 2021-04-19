@@ -8,7 +8,7 @@ takt4 = line [e 4 sn, e 4 sn, e 4 sn, e 4 sn,  d 4 sn, c 4 sn]
 takt5 = line [b 4 sn,  d 4 sn,  d 4 sn, d 4 sn, d 4 sn, c 4 sn]
 takt6 = line [a 4 sn, b 4 sn, c 4 qn, rest qn, c 4 qn, rest qn, a 4 hn]
 
---test = takt1 :+: takt2 :+: takt3 :+: takt4 :+: takt5 :+: takt6
+test = takt1 :+: takt2 :+: takt3 :+: takt4 :+: takt5 :+: takt6
 
 -- konwersja na AbsolutePitch:
 
@@ -20,3 +20,9 @@ linia5 = [71,62,62,62,62,60]
 linia6 = [69,71,60,60,69]
 
 
+--klasyfikator:
+
+-- definicje funkcji klasyfikujacych:
+g1 :: [Int] -> [Int] -> [Int]
+g1 xs xs =
+    return  xs[0] + xs[1]
