@@ -32,8 +32,8 @@ u = [69,69,69,68,64,69,69,69,71,68, 69, 69, 60]
 x = [66,68..138] 
 
 
-w_0 :: Int
-w_0 = (dot v v   - dot u v )  `div` 2
+w_0 :: Float
+w_0 = (dot v v   - dot u v )  / 2
 
 y = odejmij v u
 
@@ -47,17 +47,17 @@ y_x = dot y x
 
 
 -- odejmowanie dwoch wektorow
-odejmij :: [Int] -> [Int] -> [Int]
+odejmij :: [Float] -> [Float] -> [Float]
 odejmij [] _ = []
 odejmij _ [] = []
 odejmij (x:xs) (y:ys) = x - y : (odejmij xs ys)
 
 
 -- Iloczyn skalarny
-dot :: [Int] -> [Int] -> Int
+dot :: [Float] -> [Float] -> Float
 dot x y = sum $ zipWith (*) x y
 
-klasyfikacja:: Int -> Int 
+klasyfikacja:: Float -> Int 
 klasyfikacja y_x
     | y_x > w_0 = 1 -- klasa C1
     | y_x < w_0 = -1 --klasa C2
