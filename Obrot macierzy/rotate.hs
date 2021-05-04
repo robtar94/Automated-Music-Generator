@@ -14,7 +14,7 @@ toPitch [] = []
 toPitch (x:xs) = pitch x : toPitch xs
 
 
--- funkcje wbudowane
+-- I sposob: funkcje wbudowane
 -- -90
 rotateLeft :: [[a]] -> [[a]]
 rotateLeft = List.reverse.List.transpose
@@ -30,15 +30,24 @@ lewo = rotateLeft macierz
 -- wynik: [[3,5,6],[2,4,0],[1,0,0]]
 prawo = rotateRight macierz
 
--- 2 sposob
+-- II sposob
 
 -- const x _ = x
 
 rotate :: Int -> [a] -> [a]
 rotate _ [] = []
-rotate n xs = zipWith const (drop n (cycle xs)) xs
+rotate n xs = zipWith const (drop n (cycle xs)) xs -- n liczba wymiarow
 
-macierz2 = [7,9,3,2,4,1]
+macierz2 = [7,9,3,2,4,1] 
+
+macierz3 = rotate 4 macierz2 -- obrot macierzy 2 w 4 wymiarach
+
+
+
+
+
+
+
 
 -- obrot o 180 stopni
 x = [[1,2,3], [4,5,6], [7,8,9]]
