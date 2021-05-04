@@ -2,11 +2,16 @@ import qualified Data.List as List
 import Euterpea
 
 
--- konwersja
+-- konwersja z Pitch na AbsPitch
 
-konwersja :: [Pitch] -> [AbsPitch]
-konwersja [] = []
-konwersja (x:xs) =  absPitch x : konwersja xs 
+toAbsPitch :: [Pitch] -> [AbsPitch]
+toAbsPitch [] = []
+toAbsPitch (x:xs) =  absPitch x : toAbsPitch xs
+
+-- konwersja z AbsPitch na Pitch
+toPitch :: [AbsPitch] -> [Pitch]
+toPitch [] = []
+toPitch (x:xs) = pitch x : toPitch xs
 
 
 -- funkcje wbudowane
