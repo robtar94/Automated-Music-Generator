@@ -1,12 +1,22 @@
-import Data.List
+import qualified Data.List as List
+import Euterpea
+
+
+-- konwersja
+
+konwersja :: [Pitch] -> [AbsPitch]
+konwersja [] = []
+konwersja (x:xs) =  absPitch x : konwersja xs 
+
+
 -- funkcje wbudowane
 -- -90
 rotateLeft :: [[a]] -> [[a]]
-rotateLeft = reverse.transpose
+rotateLeft = List.reverse.List.transpose
 
 -- +90
 rotateRight :: [[a]] -> [[a]]
-rotateRight = transpose.reverse
+rotateRight = List.transpose.List.reverse
 
 --przykladowa macierz
 macierz = [[1,2,3],[0,4,5],[0,0,6]]
