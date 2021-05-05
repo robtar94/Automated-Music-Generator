@@ -1,36 +1,6 @@
-import qualified Data.List as List
-import Euterpea
+import  Data.List 
 
-
--- konwersja z Pitch na AbsPitch
-
-toAbsPitch :: [Pitch] -> [AbsPitch]
-toAbsPitch [] = []
-toAbsPitch (x:xs) =  absPitch x : toAbsPitch xs
-
--- konwersja z AbsPitch na Pitch
-toPitch :: [AbsPitch] -> [Pitch]
-toPitch [] = []
-toPitch (x:xs) = pitch x : toPitch xs
-
-
--- I sposob: funkcje wbudowane
--- -90
-rotateLeft :: [[a]] -> [[a]]
-rotateLeft = List.reverse.List.transpose
-
--- +90
-rotateRight :: [[a]] -> [[a]]
-rotateRight = List.transpose.List.reverse
-
---przykladowa macierz
-macierz = [[1,2,3],[0,4,5],[0,0,6]]
-
-lewo = rotateLeft macierz
--- wynik: [[3,5,6],[2,4,0],[1,0,0]]
-prawo = rotateRight macierz
-
--- II sposob
+-- I sposob
 
 -- const x _ = x
 
@@ -44,9 +14,23 @@ macierz3 = rotate 4 macierz2 -- obrot macierzy 2 w 4 wymiarach
 
 
 
+-- II sposob: funkcje wbudowane
+-- -90
+rotateLeft :: [[a]] -> [[a]]
+rotateLeft = reverse.transpose
 
+-- +90
+rotateRight :: [[a]] -> [[a]]
+rotateRight = transpose.reverse
 
+--przykladowa macierz
+macierz = [[1,2,3],[0,4,5],[0,0,6]]
 
+lewo = rotateLeft macierz
+-- wynik: [[3,5,6],[2,4,0],[1,0,0]]
+prawo = rotateRight macierz
+
+-- przyklad
 
 
 -- obrot o 180 stopni
