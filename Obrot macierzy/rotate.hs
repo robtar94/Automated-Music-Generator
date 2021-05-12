@@ -55,23 +55,8 @@ y2 = rotateLeft x1
 
 -- III sposob obrot o kat 90 stopni
 
--- Iloczyn skalarny
-dot :: [Double] -> [Double] -> Double
-dot x y = sum $ zipWith (*) x y
 
-w = [1,2,3,4,5]
-s = [cos 90, -sin 90, sin 90, cos 90]
+matrix :: [[a]] -> [[a]]
 
--- iloczyn skalarny
-y :: Double
-y = dot w w
-
--- mnozenie listy przez iloczyn skalarny
-
-mult :: Double -> [Double] -> [Double]
-mult x ys = map (x *) ys
-
-
--- obrocona o 90 stopni macierz w
-v :: [Double]
-v = mult y w
+--- 1. mnozenie macierzy przez wektor
+--- 2. mnozenie macierzy przez macierz
