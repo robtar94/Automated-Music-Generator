@@ -71,5 +71,3 @@ y = [[1,2,3],[4,5,6],[1,2,1]]
 z :: Matrix
 z = [[4,5,6], [1,2,1],[3,1,1]] 
 
--- trojdzwieki  do kolberga dolozyc harmownie i zrobic obrot w przestrzenii trojwymiarowej 
--- 1 glos 2 glos harmonia
