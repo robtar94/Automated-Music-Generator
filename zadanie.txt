@@ -1,2 +1,3 @@
--- trojdzwieki  do kolberga dolozyc harmownie i zrobic obrot w przestrzenii trojwymiarowej 
--- 1 glos 2 glos harmonia
+-- poprawic konwersje na int w liscie
+-- obracac o mniejszy kąt
+zrobic mapowanie dzwiekow dodatnich na ujemne za pomoca funkcji
