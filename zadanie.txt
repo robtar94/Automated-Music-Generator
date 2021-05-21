@@ -1,3 +1,3 @@
--- poprawic konwersje na int w liscie (ZROBIONE)
--- obracac o mniejszy kąt (ZROBIONE)
-zrobic mapowanie dzwiekow dodatnich na ujemne za pomoca funkcji
+Plik z macierzami gotowy. W celu zrobienia ciekawego utworu 
+najlepiej jest brac fragmenty roznych utworow 
+i laczyc je w  jakies ciekawsze kompozycje
