@@ -99,13 +99,12 @@ ins4 = instrument Ocarina mhr2 :=: inv2
 inv3 = invert inv2 
 ins5 = instrument HammondOrgan  inv3
 koniec1 = instrument MusicBox  mv3
-koniec2 = instrument Ocarina mvx2 
+
 trzy = (Modify (Phrase [ Tmp $ Accelerando  1.2])) koniec1
-cztery = (Modify (Phrase [Tmp $ Accelerando 1.2])) koniec2
 
 
 
-music = mvx2 :=: mv3 :+: mvv2 :+: ins2 :+: r1 :+: ins2  :+: mhr2 :=: ins5 :+: ins3 :+: mv3 :=: mvx2 :+: trzy :=: cztery
+music = mvx2 :=: mv3 :+: mvv2 :+: ins2 :+: r1 :+: ins2  :+: mhr2 :=: ins5 :+: ins3 :+: mv3  :+: trzy 
 
 
 
