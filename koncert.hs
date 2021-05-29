@@ -104,7 +104,7 @@ trzy = (Modify (Phrase [ Tmp $ Accelerando  1.2])) koniec1
 
 
 
-music = mvx2 :=: mv3 :+: mvv2 :+: ins2 :+: r1 :+: ins2  :+: mhr2 :=: ins5 :+: ins3 :+: mv3  :+: trzy 
+music = mvx2 :=: mv3 :+: mvv2 :=: ins2 :+: r1 :+: ins2  :=: mhr2 :=: ins5 :+: ins3 :=: mv3  :=: trzy 
 
 
 
