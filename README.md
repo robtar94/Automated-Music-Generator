@@ -1,2 +1,2 @@
-# RNM: Recurrent Neural Music
-Tworzenie muzyki za pomocą rekurencyjnych sieci neuronowych.
+
+Projekt do aplikacji do automatycznego generowania muzyki w Haskellu przy pomocy biblioteki Euterpea.
