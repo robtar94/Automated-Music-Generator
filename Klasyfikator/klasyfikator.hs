@@ -26,11 +26,15 @@ linia4 = [64, 64,64,64,62,60]
 linia5 = [71,62,62,62,62,60]
 linia6 = [69,71,60,60,69]
 
-v = [81, 77, 79, 77, 81, 77, 81, 77, 79, 81, 77, 79, 77] 
-u = [69,69,69,68,64,69,69,69,71,68, 69, 69, 60] 
+v :: [AbsPitch]
+u :: [AbsPitch]
 
+v = [64, 64,64,64,62,60,71,62,62,62,62,60] 
+u = [0,2,3,5,7,8,10,12,14,15,17,19]
 
 x = [66,68..138] 
+
+
 
 
 w_0 :: Float
@@ -39,6 +43,7 @@ w_0 = (dot v v   - dot u v )  / 2
 y = odejmij v u
 
 y_x = dot y x
+
 
 
 
@@ -58,9 +63,14 @@ odejmij (x:xs) (y:ys) = x - y : (odejmij xs ys)
 dot :: [Float] -> [Float] -> Float
 dot x y = sum $ zipWith (*) x y
 
-klasyfikacja:: Float -> Int 
+klasyfikacja :: Float -> Int 
 klasyfikacja y_x
     | y_x > w_0 = 1 -- klasa C1
     | y_x < w_0 = -1 --klasa C2
 
-
+toAbsPitches :: [Pitch] -> [AbsPitch]
+toAbsPitches ps = map absPitch ps
+    
+    
+toPitches :: [AbsPitch] -> [Pitch]
+toPitches as = map pitch as
