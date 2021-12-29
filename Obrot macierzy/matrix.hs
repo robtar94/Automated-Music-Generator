@@ -4,8 +4,8 @@ import Data.List
 type Vector = [Int]
 type Matrix = [[Int]]
 
-v :: Vector
-v = [1,2,3]
+z :: Vector
+z = [1,2,3]
 m :: Matrix
 m = [[1,2,3],
      [4,5,6]]
@@ -18,8 +18,8 @@ numRows = length
 numColumns :: Matrix -> Int
 numColumns =  length . head
 
-x :: Matrix
-x = [[1,2,3],
+c :: Matrix
+c = [[1,2,3],
       [4,5,6],
       [7,3,2]]
 
@@ -51,6 +51,10 @@ zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
 -- sumowanie dwoch wektorow
 vectorSum :: Vector -> Vector -> Vector
 vectorSum = zipWith' (+)
+
+-- odejmowanie dwoch wektorow
+vectorSubtraction :: Vector -> Vector -> Vector
+vectorSubtraction = zipWith' (-)
 -- Sumowanie dwoch Macierzy
 matrixSum :: Matrix -> Matrix -> Matrix
 matrixSum = zipWith' vectorSum
@@ -64,10 +68,9 @@ matrixProduct :: Matrix -> Matrix -> Matrix
 matrixProduct m n = [map (dotProduct row) (transpose n) | row <- m  ] -- map wyciaga wiersz, transpose zamienia wiersze na kolumny i oblicza iloczyn skalarny
 
 
-
-y :: Matrix
-y = [[1,2,3],[4,5,6],[1,2,1]]
-
-z :: Matrix
-z = [[4,5,6], [1,2,1],[3,1,1]] 
-
+v :: Vector
+u :: Vector
+x :: Vector
+v = [64, 64,64,64,62,60,71,62,62,62,62,60] 
+u = [60,62,63,65,67,68,70,72,74,76,78,80] 
+x = [48,50,52,54,56,58,60,62,64,66,68,70] 
