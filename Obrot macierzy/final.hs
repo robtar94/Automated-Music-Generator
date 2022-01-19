@@ -3,13 +3,14 @@ import Data.List
 
 toInt::Float -> Int
 toInt x = round x
-
+-- macierz obrotu
 rx t = [[1,0,0],[0, cos t,-sin t], [0, sin t,cos t]]
 ry t = [[cos t, 0, sin t],[0,1,0], [-sin t,0 ,cos t]]
 rz t = [[cos t, -sin t, 0],[sin t, cos t, 0], [0,0,1]]
 
 rxyz t = a_x_w (a_x_b (a_x_b (rx t) (ry t))(rz t)) 
   
+-- dowolnie ustalona macierz a i wektory w i ww.
 a=[[1,2,3],[4,5,6],[6,7,8]]
 w :: [Float]
 w=[62,65,69]
