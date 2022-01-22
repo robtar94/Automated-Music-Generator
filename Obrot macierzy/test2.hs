@@ -1,51 +1,120 @@
 import Euterpea
-import Data.List
+import Data.List as L
+import qualified Data.Vector.Unboxed as U
 
-toInt::Float -> Int
-toInt x = round x
+
+-- definicja typów
+{-# OPTIONS_GHC -Wno-overlapping-patterns #-}
+type Vector = [Double]
+type Matrix = [[Double]]
+
 -- macierz obrotu
-rx t = [[1,0,0],[0, cos t,-sin t], [0, sin t,cos t]]
-ry t = [[cos t, 0, sin t],[0,1,0], [-sin t,0 ,cos t]]
-rz t = [[cos t, -sin t, 0],[sin t, cos t, 0], [0,0,1]]
+mx p = [[1,0,0], [0, cos p, sin p], [0, -sin p, cos p]] -- p = phi
+my p = [[cos p, 0, - sin p], [0, 1, 0], [sin p, 0, cos p]]
+mz p = [[cos p, sin p, 0], [-sin p, cos p, 0], [0, 0, 1]]
 
-rxyz t = a_x_w (a_x_b (a_x_b (rx t) (ry t))(rz t)) 
+-- gama c-dur
+gamaC :: [Pitch]
+gamaC = [(C, 4), (D, 4), (E, 4), (F, 4), (A, 4), (B, 4), (C,4)]
+absGamaC :: [AbsPitch]
+absGamaC = [60,62,64,65,69,71,60]
 
--- dowolnie ustalona macierz a i wektory w i ww.
-a=[[1,2,3],[4,5,6],[6,7,8]]
-w :: [Float]
-w=[62,65,69]
-ww :: [Float]
-ww =[42,49,56]
+-- akordy
+cDur :: [Pitch]
+cDur = [(C, 4), (E, 4), (G, 4)]
+aDur :: [Pitch]
+aDur = [(A, 4), (Cs, 4), (E, 4)]
+gDur :: [Pitch]
+gDur = [(G, 4), (B, 4), (D, 4)]
+fDur :: [Pitch]
+fDur = [(F, 4), (A, 4), (C, 4)]
+
+-- akordyAbs
+abscDur :: [AbsPitch]
+abscDur = [60,64,67]
+absaDur :: [AbsPitch]
+absaDur = [69,61,64]
+absGdur :: [AbsPitch]
+absGdur = [67,71,62]
+absFdur :: [AbsPitch]
+absFdur = [65,69,60]
 
 
-w_x_c [][]= 0
-w_x_c (w:ws) (c:cs) = w * c + w_x_c ws cs
+-- wektory
+-- v1 do v4 to akordy
+v1 :: Vector
+v1 = [60,64,67]
+v2 :: Vector
+v2 = [69,61,64]
+v3 :: Vector
+v3 = [67,71,62]
+v4 :: Vector
+v4 = [65,69,60]
+-- U - to gama C-dur
+u :: Vector
+u = [60,62,64,65,69,71,60]
 
-kolumna i a b = [ w_x_c (a!!i) (b!!j) | j<-[0..length b-1]]
+-- Obliczenia
 
---mnozenie macierzy a i b wymiaru nxn
---a_x_b :: [[Int]] -> [[Int]]-> [[Int]]
-a_x_b a b = [kolumna i a (Data.List.transpose b)| i<-[0..length a -1]]
+-- 1. Matryca wektorow
+akordy :: Matrix
+akordy = [[60,64,67], 
+          [69,61,64],
+          [67,71,62],
+          [65,69,60]]
+gama :: Matrix
+gama = [u]
 
---mnozenie macierzy przez wektor
---a_x_w :: [[Int]] -> [Int]-> [Int]
-a_x_w a w = [ w_x_c (a!!i) w | i<-[0..length a-1]]
+-- obliczenia
+t1 :: Matrix
+t1 = [u,v2]
+
+
+
+f = [[1,0,0]]
+
+test = toInt(concat(mmult Main.f (mz 90)))
+
+
+
+
+
+-- funkcje
+
+--ZipWith'
+zipWith' :: (a->b->c) -> [a]->[b]->[c]
+zipWith' f [] [] = []
+zipWith' f [] _ = []
+zipWith' f _ [] = []
+zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+
+toInt:: [Double] -> [Int]
+toInt as =  map round as
+
+toAbsPitches :: [Pitch] -> [AbsPitch]
+toAbsPitches ps = map absPitch ps
+    
+    
+toPitches :: [AbsPitch] -> [Pitch]
+toPitches as = map pitch as
+
+-- Konwersja listy int na float
+floatList :: [AbsPitch] -> [Float]
+floatList [] = []
+floatList (n:ns)  = (x) : floatList(ns)
+    where x = fromIntegral n :: Float
+
+--Iloczyn Skalarny wektorow
+dotProduct :: Vector -> Vector -> Double
+dotProduct v w = sum (zipWith' (*) v w)
+-- mnozenie macierzy
+mmult :: Num a => [[a]] -> [[a]] -> [[a]]
+mmult a b = [[sum $ zipWith (*) ar bc | bc <- (L.transpose b)] | ar <- a]
 
 toMusicPitch :: Dur ->[Pitch]->[Music Pitch]
 toMusicPitch   _ [] = [rest qn]
-toMusicPitch  i (w:ws) = note i w : toMusicPitch i ws 
+toMusicPitch  i (w:ws) = note i w : toMusicPitch i ws
 
-p w = map pitch (map toInt w)
-m = line $ toMusicPitch qn (p w)
-
-w1 t w = map pitch (map toInt (rxyz t w))
-m1 t w = line $ toMusicPitch qn (w1 t w)
-
-nowe_w t stare_w = rxyz t stare_w
-
---ciag floatow po obrocie
-generuj :: Int->[Float]->[Float]
-generuj 0 s = []
-generuj n s = s ++ (generuj (n-1) w1)
-    where
-       w1 = (nowe_w (0.1) s)
+-- konwersja macierzy na wektor
+conv :: Matrix -> Vector
+conv = foldr (++) []
