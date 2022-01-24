@@ -1,6 +1,5 @@
 import Euterpea
 import Data.List as L
-import qualified Data.Vector.Unboxed as U
 
 
 -- definicja typów
@@ -71,11 +70,12 @@ t1 = [u,v2]
 
 
 
-f = [[1,0,0]]
+v = [[1,0,0]]
 
-test = toInt(concat(mmult Main.f (mz 90)))
+test = toInt(concat(mmult v (my 90)))
 
-
+k :: [AbsPitch]
+k = [0,1,0]
 
 
 
@@ -91,12 +91,15 @@ zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
 toInt:: [Double] -> [Int]
 toInt as =  map round as
 
+pcToInt12 :: PitchClass -> Int
+pcToInt12 x = pcToInt x `mod` 12 
+
 toAbsPitches :: [Pitch] -> [AbsPitch]
 toAbsPitches ps = map absPitch ps
     
     
 toPitches :: [AbsPitch] -> [Pitch]
-toPitches as = map pitch as
+toPitches as = map pitch  as
 
 -- Konwersja listy int na float
 floatList :: [AbsPitch] -> [Float]
@@ -118,3 +121,20 @@ toMusicPitch  i (w:ws) = note i w : toMusicPitch i ws
 -- konwersja macierzy na wektor
 conv :: Matrix -> Vector
 conv = foldr (++) []
+
+--dodanie nut
+
+-- Definicja nuty (rownorzedny zapis)
+
+--Prim (Note qn (C, 4))
+--note qn (C, 4)
+--c 4 qn
+
+pcToSN :: PitchClass -> Music Pitch
+pcToSN pc = note sn (pc, 4)
+
+pcToQN :: PitchClass -> Music Pitch
+pcToQN pc = note qn (pc, 4)
+
+pcToHN :: PitchClass -> Music Pitch
+pcToHN pc = note hn (pc, 4)
