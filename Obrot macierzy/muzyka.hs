@@ -107,7 +107,7 @@ rotate_utwor = r1_play :+: r2_play :+: r3_play :+: r4_play
 -- granie
 test :: IO ()
 test = do
-    putStrLn "pierwszy utwor" 
+    putStrLn "oryginalny utwor" 
     play utwor
     putStrLn "Ten sam utwor, ale po obrocie"
     play rotate_utwor

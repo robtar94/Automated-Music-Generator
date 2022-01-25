@@ -59,7 +59,9 @@ wektor4 = do
     
     
 --obrocony wektor 1
+rw1 :: [(PitchClass, Octave)]
 rw1 = [(Gs,5),(Cs,2),(Fs,4),(G,5),(G,1), (Cs, 5)]
+rw1_play :: Music Pitch
 rw1_play =  chord $ toMusicPitch qn (rw1)
 
 -- oryginalny wektor1
