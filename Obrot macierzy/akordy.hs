@@ -19,11 +19,6 @@ v3 :: Vector
 v3 = [67,71,62]
 v4 :: Vector
 v4 = [65,69,60]
--- U - to gama C-dur
-u :: Matrix
-u = [[60,62,64,65,69,71,60]]
-
-
 -- wektory upakowane w macierze
 w1 :: Matrix
 w1 = [v1]
@@ -37,7 +32,6 @@ w4 = [v4]
 
 
 -- macierze do obrotu 3D
-
 mXY = mmult (mx 5) (my 5) 
 mXYZ = mmult (mXY) (mz 5) -- cala macierz obrotu o kat 5
 

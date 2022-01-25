@@ -46,6 +46,15 @@ mXY = mmult (mx 20) (my 20)
 mXYZ = mmult (mXY) (mz 20) -- cala macierz obrotu o kat phi
 
 -- wektory
+v1 :: Vector
+v1 = [0,4,7,11,2,5,9,0,4,7,11,0]
+v2 :: Vector
+v2 =[0,5,9,2,7,0,5,11,4,9,2,7]
+v3 :: Vector
+v3 = [0,9,5,2,11,7,4,0,9,5,2,11]
+v4 :: Vector
+v4 =[0,7,4,11,7,2,11,5,2,9,5,0]
+
 w1 :: Matrix
 w1 = [[0,4,7,11,2,5,9,0,4,7,11,0]]
 w2 :: Matrix
